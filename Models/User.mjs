@@ -15,6 +15,7 @@ const UserSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.String,
         required: true,
     },
+    todos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Todo" }],
 });
 
 export const User = mongoose.model("User", UserSchema);
