@@ -1,11 +1,11 @@
 {
   "name": "expressjs-todo-app",
   "version": "1.0.0",
-  "main": "src/Program.mjs",
+  "main": "Program.mjs",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/Program.mjs",
-    "start": "node src/Program.mjs",
+    "dev": "nodemon Program.mjs",
+    "start": "node Program.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
