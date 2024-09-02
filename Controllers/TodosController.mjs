@@ -95,3 +95,27 @@ export const updateTodo = async (req, res) => {
         res.sendStatus(400);
     }
 };
+
+export const deleteTodo = async (req, res) => {
+    const validationErrors = validationResult(req);
+    if (!validationErrors.isEmpty())
+        return res.status(400).send(validationErrors);
+
+    const data = matchedData(req);
+    let todo;
+
+    try {
+        todo = await Todo.findById(data.id);
+        if (todo.user.toString() != req.user._id.toString())
+            throw new Error("This todo is not for this user.");
+    } catch (err) {
+        return res.status(404).send({ msg: "Todo not found." });
+    }
+
+    try {
+        await Todo.deleteOne({ _id: todo._id });
+        res.status(200).send({ msg: "Todo deleted successfully." });
+    } catch (err) {
+        res.sendStatus(400);
+    }
+};

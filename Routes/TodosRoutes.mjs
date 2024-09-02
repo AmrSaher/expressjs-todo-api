@@ -34,5 +34,10 @@ router.put(
     checkSchema(UpdateTodoValidationSchema),
     TodosController.updateTodo
 );
+router.delete(
+    "/:id",
+    checkSchema(TodoIDValidationSchema),
+    TodosController.deleteTodo
+);
 
 export default router;
